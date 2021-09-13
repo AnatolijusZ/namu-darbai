@@ -1,5 +1,7 @@
 import React from 'react';
-import ChangeColor from './Mygtukas'
+import Mygtukas1 from './Mygtukas'
+import Mygtukas2 from './Mygtukas2'
+import Mygtukas3 from './Mygtukas3'
 
 class App extends React.Component {
 
@@ -29,14 +31,15 @@ class App extends React.Component {
     render () {
     return ( <>
         <div className="rutulys" style={{backgroundColor: this.state.bg}}>           
-            <ChangeColor clickToChangeColor={this.changeColor}></ChangeColor>
+            <Mygtukas1 clickToChangeColor={this.changeColor}></Mygtukas1>
         </div>
         <div className="rutulys" style={{backgroundColor: this.state.bg}}>           
-            <ChangeColor clickToChangeColor={this.changeColor}></ChangeColor>
+            <Mygtukas2 clickToChangeColor={this.changeColor}></Mygtukas2>
         </div>     
         <div className="rutulys" style={{backgroundColor: this.state.bg}}>           
-            <ChangeColor clickToChangeColor={this.changeColor}></ChangeColor>
-        </div>             
+            <Mygtukas3 clickToChangeColor={this.changeColor}></Mygtukas3>
+        </div>    
+         
     </>);
     }
 }

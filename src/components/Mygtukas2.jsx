@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Mygtukas1 extends React.Component {
+class Mygtukas2 extends React.Component {
 
     render () {
         return (
@@ -9,4 +9,4 @@ class Mygtukas1 extends React.Component {
     }
 }
 
-export default Mygtukas1
+export default Mygtukas2
