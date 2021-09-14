@@ -118,12 +118,40 @@ code {
 
 .rutulys {
 
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+  //border-radius: 50%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: relative;
+  input {
+    position: absolute;
+    //top: 50px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    text-align: center;
+    &.spalva {
+      top: 100px;
+    }
+    &.skersmenis {
+      top: 200px;
+    }
+    &.kvadratas {
+      top:100px;
+      left: 50px;
+    }
+  }
+  .input-button {
+    position: absolute;
+    top: 130px;
+  }
+  .input-button2 {
+    position: absolute;
+    top: 230px;
+  }
+  .input-button3 {
+    top: 500px;
+    left: 50px;
+  }
 }
 
 button {
@@ -136,3 +164,4 @@ button {
   border-radius: 10px;
   cursor: pointer;
 }
+
