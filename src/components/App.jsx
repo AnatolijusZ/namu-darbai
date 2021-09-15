@@ -9,7 +9,8 @@ class App extends React.Component {
         super();
         this.state = {
             pets: [],
-            petInput: ''
+            petInput: '',
+            r: '50%'
            
     }; 
     };
@@ -21,8 +22,10 @@ class App extends React.Component {
         this.setState({
             pets: pets
         })
-        localStorage.setItem('allPets', JSON.stringify(pets));
-        
+        this.setState({
+            r: '50%'                
+            });
+        localStorage.setItem('allPets', JSON.stringify(pets));               
     }
     addSheep = (e) => {
         const sheep ={color:this.state.petInput};
@@ -31,15 +34,19 @@ class App extends React.Component {
         this.setState({
             pets: pets
         })
-        localStorage.setItem('allPets', JSON.stringify(pets));
+        this.setState({
+            r: '0%'                
+            });
+            localStorage.setItem('allPets', JSON.stringify(pets));
+        }
+             
         
-    }
-    
     petInputHandler= (e) => {
         this.setState ({
             petInput: e.target.value,
         });
     }
+  
     componentDidMount() {
         const pets = JSON.parse(localStorage.getItem('allPets'));
         if (null === pets) {
@@ -50,17 +57,18 @@ class App extends React.Component {
         })
     }
     
+    form = () => {
+    }
 
     render () {
     return ( <>
-       {this.state.pets.map((b, i) => <Pets key={i} color={b.color} />)}
-       {this.state.pets.map((b, i) => <Pets2 key={i} color={b.color} />)}
+    
+            {this.state.pets.map((b, i, radius) => <Pets key={i} color={b.color} radius={radius.r}/>)}
+           
+        <input type="text" value={this.state.petInput} onChange={this.petInputHandler}></input>
         <div>
-            <input type="text" value={this.state.petInput} onChange={this.petInputHandler}></input>
             <button className="input-button" onClick={this.addCow}>Add Cow</button>
-            <div>
-            
-                <button className="input-button" onClick={this.addSheep}>Add Sheep</button></div>
+            <button className="input-button" onClick={this.addSheep}>Add Sheep</button>
             
         </div>        
     </>);
