@@ -1,84 +1,70 @@
 import React from 'react';
+import Pets from './Pets';
+import Pets2 from './Pets2';
 
 
 class App extends React.Component {
 
     constructor() {
         super();
-        this.state = {  bg: 'palegreen',
-                        w: '100px',
-                        h: '100px',
-                        r:  '50%',
-                        in: 'Iveskit spalva',
-                        in2: 'Iveskit skersmeni'
-                         }; 
+        this.state = {
+            pets: [],
+            petInput: ''
+           
+    }; 
     };
-
-    changeColor = (color) => {
+    
+    addCow = (e) => {
+        const cow ={color:this.state.petInput};
+        const pets = this.state.pets.slice()
+        pets.push(cow);
+        this.setState({
+            pets: pets
+        })
+        localStorage.setItem('allPets', JSON.stringify(pets));
+        
+    }
+    addSheep = (e) => {
+        const sheep ={color:this.state.petInput};
+        const pets = this.state.pets.slice()
+        pets.push(sheep);
+        this.setState({
+            pets: pets
+        })
+        localStorage.setItem('allPets', JSON.stringify(pets));
+        
+    }
+    
+    petInputHandler= (e) => {
         this.setState ({
-            bg: color,
+            petInput: e.target.value,
+        });
+    }
+    componentDidMount() {
+        const pets = JSON.parse(localStorage.getItem('allPets'));
+        if (null === pets) {
+            return;
+        }
+        this.setState({
+           pets: pets
         })
     }
-
     
-    inChange = (e) => {
-        this.setState ({
-            in: e.target.value,
-        });
-    }
-    
-    inChange2 = (e) => {
-        this.setState ({
-            in2: e.target.value,
-        });
-    }
-
-    doColor = () => {
-        this.setState(state => ({bg: state.in}));
-    }
-    
-    radius = () => {
-        this.setState(state =>({w:state.in2, h:state.in2}))
-    }
-    form = () => {
-        this.setState(state => {
-            let radius;
-            if (state.r == '50%') {
-                radius = '0%'
-            }
-            else if (state.r == '0%') {
-                radius = '50%'
-            }
-            return (
-                {r: radius}
-            )
-        });
-            
-    }
 
     render () {
     return ( <>
-        <div className="rutulys" style={{backgroundColor: this.state.bg, height:this.state.h, width:this.state.w, borderRadius: this.state.r}}>  
-
-        <input className ="spalva" type="text" value={this.state.in} onChange={this.inChange}></input>
-        <button className="input-button" onClick={this.doColor}>Change Color</button>
-
-        <input className ="skersmenis" type="text" value={this.state.in2} onChange={this.inChange2}></input>
-        <button className="input-button2" onClick={this.radius}>Change Size</button>
+       {this.state.pets.map((b, i) => <Pets key={i} color={b.color} />)}
+       {this.state.pets.map((b, i) => <Pets2 key={i} color={b.color} />)}
+        <div>
+            <input type="text" value={this.state.petInput} onChange={this.petInputHandler}></input>
+            <button className="input-button" onClick={this.addCow}>Add Cow</button>
+            <div>
             
-        <input className = "kvadratas" type="checkbox" defaultunhecked={this.state.r} onChange={this.form}></input>
-        </div>    
-         
+                <button className="input-button" onClick={this.addSheep}>Add Sheep</button></div>
+            
+        </div>        
     </>);
     }
 }
 
 export default App
-
-//
-//
-
-
-
-
-    
