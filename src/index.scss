@@ -183,3 +183,9 @@ button {
     align-items: center;
     position: relative;
   }
+.knygynas {
+  display: grid;
+  gap:30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-column-start: 3;
+}

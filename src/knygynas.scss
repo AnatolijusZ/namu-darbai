@@ -1,0 +1,22 @@
+.knygynas {
+    display: grid;
+    gap:30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    
+    div {
+        display: grid;
+        justify-items: center;
+        .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .knygos {
+        border: 1px solid black;
+        
+    }
+  }
