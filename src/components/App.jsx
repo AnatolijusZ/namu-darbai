@@ -9,26 +9,26 @@ import Knygos from './Knygos';
             console.log("Start");
             axios.get('https://in3.dev/knygos/')
             .then(function (response) {
-                console.log(response.data);
                 setKnygynas(response.data);
             });
         },[]);
 
-     
-      //      const todosCopy2 = todos.slice();
-      //      for(let i=0; i<todosCopy2.length; i++) {
-      //          if(id === todosCopy2[i].id){
-      //              todosCopy2[i].completed = !todosCopy2[i].completed;
-       //             break;
-       //         }
-      //      }
-      //      setTodos(todosCopy2);
-            
 
+        const pirkti = (id) => {
+        const knygynasCopy = knygynas.slice();
+        for (let i=0; i<knygynasCopy.length; i++) {
+            if(knygynasCopy[i].id === id) {
+                knygynasCopy.splice(i, 1);
+                break;
+            }
+        } 
+            setKnygynas(knygynasCopy);
+        }    
       return (
           <div className="knygynas">
-            {knygynas.map((knygos)=>(<Knygos key={knygos.id} img={knygos.img} author={knygos.author} title={knygos.title} price={knygos.price}></Knygos>))}
+            {knygynas.map((knygos)=>(<Knygos key={knygos.id} img={knygos.img} author={knygos.author} title={knygos.title} price={knygos.price} sell={pirkti}></Knygos>))}  
         </div>
+     
     )
 }
         

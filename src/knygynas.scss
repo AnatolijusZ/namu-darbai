@@ -1,3 +1,7 @@
+:root {
+    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,115,121,1) 21%, rgba(0,212,255,1) 100%);
+}
+
 .knygynas {
     display: grid;
     gap:30px;
@@ -13,10 +17,22 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin: 5px;
+        }
+        .author {
+            font-size: 18px;
+            font-style: italic;
+        }
+        button {
+            width: 50px;
+            height: 30px;
+        }
+        img {
+            margin: 5px 0px 5px;
         }
     }
     .knygos {
         border: 1px solid black;
         
     }
-  }
+}

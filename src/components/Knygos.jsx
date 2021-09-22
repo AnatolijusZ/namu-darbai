@@ -6,10 +6,11 @@ function Knygos(props) {
     return (
         <div className="knygos">
             <div className="id">{props.id}</div>
-            <img className="img" src={props.img}></img>
+            <img className="img" src={props.img} alt="knyga"></img>
             <div className="author">{props.author}</div>
             <div className="title">{props.title}</div>
             <div className="price">{props.price}</div>
+            <button onClick={() => props.sell(props.id)}>Pirkti</button>
         </div>
     )
     
